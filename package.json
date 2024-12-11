@@ -7,7 +7,8 @@
     "start": "npm run build && node build/index.js",
     "build": "rimraf ./build && tsc",
     "start:dev": "npx nodemon",
-    "vercel:update": "vercel --prod --force"
+    "vercel:update:force": "vercel --prod --force",
+    "vercel:update": "vercel --prod"
   },
   "author": "Allison Barros (Bx)",
   "license": "ISC",
