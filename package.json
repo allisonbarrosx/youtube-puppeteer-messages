@@ -4,13 +4,19 @@
   "description": "Puppeteer to scrap youtube live chat messages",
   "main": "index.js",
   "scripts": {
-    "vercel:update": "vercel --prod --force",
-    "start": "node index.js"
+    "start": "npm run build && node build/index.js",
+    "build": "rimraf ./build && tsc",
+    "start:dev": "npx nodemon",
+    "vercel:update": "vercel --prod --force"
   },
   "author": "Allison Barros (Bx)",
   "license": "ISC",
   "devDependencies": {
-    "puppeteer": "^23.10.3"
+    "nodemon": "^3.1.7",
+    "puppeteer": "^23.10.3",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "chrome-aws-lambda": "^10.1.0",

@@ -1,4 +1,6 @@
-const app = require("express")();
+// @ts-nocheck
+const express = require("express");
+const app = express();
 
 let chrome = {};
 let puppeteer;
