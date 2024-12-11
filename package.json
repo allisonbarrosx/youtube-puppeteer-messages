@@ -4,7 +4,8 @@
   "description": "Puppeteer to scrap youtube live chat messages",
   "main": "index.js",
   "scripts": {
-    "vercel:update": "vercel --prod --force"
+    "vercel:update": "vercel --prod --force",
+    "start": "node index.js"
   },
   "author": "Allison Barros (Bx)",
   "license": "ISC",
