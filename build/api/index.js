@@ -11,10 +11,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 // @ts-nocheck
 const express = require("express");
 const app = express();
-let chrome = {};
+let chromium = {};
 let puppeteer;
 if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
-    chrome = require("chrome-aws-lambda");
+    chromium = require("@sparticuz/chromium");
     puppeteer = require("puppeteer-core");
 }
 else {
@@ -24,9 +24,10 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let options = {};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
         options = {
-            args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
-            defaultViewport: chrome.defaultViewport,
-            executablePath: yield chrome.executablePath,
+            // args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+            args: chromium.args,
+            defaultViewport: chromium.defaultViewport,
+            executablePath: yield chromium.executablePath(),
             headless: true,
             ignoreHTTPSErrors: true,
         };

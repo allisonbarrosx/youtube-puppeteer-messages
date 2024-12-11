@@ -20,7 +20,7 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "chrome-aws-lambda": "^10.1.0",
+    "@sparticuz/chromium": "^131.0.1",
     "express": "^4.21.2",
     "puppeteer-core": "^10.4.0"
   }
