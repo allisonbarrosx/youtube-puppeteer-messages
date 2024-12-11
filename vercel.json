@@ -1,5 +1,26 @@
 {
-  "version": 2, 
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }],
-  "outputDirectory": "build"
+  "version": 2,
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "builds": [
+    {
+      "src": "build/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "build/api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "build/api/index.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+  ]
 }
