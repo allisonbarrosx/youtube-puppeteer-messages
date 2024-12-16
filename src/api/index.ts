@@ -83,16 +83,15 @@ app.get("/", async (req, res) => {
           "#contents yt-live-chat-text-message-renderer"
         )
       );
-      // Select the last element, if it exists
-      const lastElement = chatElements[chatElements.length - 1];
-      if (!lastElement) return null; // Return null if no messages are found
+      // Take the last 20 elements
+      const last20Elements = chatElements.slice(-20);
 
-      // Extract details from the last message
-      return {
-        author: lastElement.querySelector("#author-name")?.textContent?.trim() || "Unknown",
-        message: lastElement.querySelector("#message")?.innerHTML || "", // Include emojis as HTML
-        messageId: lastElement.getAttribute("id") || "", // Extract the message ID
-      };
+      // Map the last 20 elements to extract the desired data
+      return last20Elements.map((el) => ({
+        author: el.querySelector("#author-name")?.textContent?.trim() || "Unknown",
+        message: el.querySelector("#message")?.innerHTML || "", // Include emojis as HTML
+        messageId: el.getAttribute("id") || "", // Extract the message ID
+      }));
     });
 
     // Deduplicate messages by messageId
